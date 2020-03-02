@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.southsystem.kobecodechallenge.model.MovieDetail" />
+
+        <variable
+            name="activity"
+            type="com.southsystem.kobecodechallenge.view.activity.MovieDetailActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparentBlack">
+
+        <ImageView
+            android:id="@+id/ivBackground"
+            imageUrl="@{movie.poster}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".3"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/activity_movie_detail_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:alpha="1"
+            android:fontFamily="@font/gothic"
+            android:text="@{movie.title}"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_movie_detail_backarrow"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Aves de Rapina" />
+
+        <ImageView
+            android:id="@+id/activity_movie_detail_backarrow"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha=".8"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent=".7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivThumbnail"
+                    imageUrl="@{movie.poster}"
+                    android:layout_width="180dp"
+                    android:layout_height="220dp"
+                    android:layout_margin="15dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/activity_movie_detail_genre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/poppins"
+                    android:maxLines="1"
+                    android:text="@{movie.releaseDate}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivThumbnail"
+                    app:layout_constraintTop_toTopOf="@+id/ivThumbnail"
+                    tools:text="@tools:sample/full_names" />
+
+                <TextView
+                    android:id="@+id/activity_movie_detail_release_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivThumbnail"
+                    tools:text="Release date" />
+
+                <!--                <ProgressBar-->
+                <!--                    android:id="@+id/activity_movie_detail_loader"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="0dp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="@id/activity_movie_detail_release_date"-->
+                <!--                    app:layout_constraintStart_toEndOf="@id/activity_movie_detail_release_date"-->
+                <!--                    app:layout_constraintTop_toTopOf="@id/activity_movie_detail_release_date"-->
+                <!--                    tools:visibility="gone" />-->
+
+                <TextView
+                    android:id="@+id/activity_movie_detail_support_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_margin="15dp"
+                    android:fontFamily="@font/poppins"
+                    android:orientation="horizontal"
+                    android:text="@{movie.overview}"
+                    android:textSize="17sp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="@tools:sample/lorem" />
+
+                <include
+                    android:id="@+id/activity_movie_detail_error_component"
+                    layout="@layout/error_component"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/activity_movie_detail_release_date" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
