@@ -10,48 +10,58 @@
 9        android:targetSdkVersion="29" />
 9-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml
 10
-11    <application
-11-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:5:5-19:19
-12        android:allowBackup="true"
-12-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:6:9-35
-13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\b038a98c3dbcd7efb11a5da54422ed14\core-1.1.0\AndroidManifest.xml:24:18-86
-14        android:debuggable="true"
-15        android:icon="@mipmap/ic_launcher"
-15-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:7:9-43
-16        android:label="@string/app_name"
-16-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:8:9-41
-17        android:roundIcon="@mipmap/ic_launcher_round"
-17-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:9:9-54
-18        android:supportsRtl="true"
-18-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:10:9-35
-19        android:theme="@style/AppTheme" >
-19-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:11:9-40
-20        <activity android:name="com.southsystem.kobecodechallenge.movie.MovieActivity" >
-20-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:12:9-18:20
-20-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:12:19-54
-21            <intent-filter>
-21-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:13:13-17:29
-22                <action android:name="android.intent.action.MAIN" />
-22-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:14:17-69
-22-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:14:25-66
-23
-24                <category android:name="android.intent.category.LAUNCHER" />
-24-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:16:17-77
-24-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:16:27-74
-25            </intent-filter>
-26        </activity>
-27
-28        <provider
-28-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
-29            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-29-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
-30            android:authorities="com.southsystem.kobecodechallenge.lifecycle-process"
-30-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
-31            android:exported="false"
-31-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
-32            android:multiprocess="true" />
-32-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
-33    </application>
-34
-35</manifest>
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:6:22-64
+12
+13    <application
+13-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:8:5-25:19
+14        android:name="com.southsystem.kobecodechallenge.MyApplication"
+14-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:9:9-38
+15        android:allowBackup="true"
+15-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:10:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\b038a98c3dbcd7efb11a5da54422ed14\core-1.1.0\AndroidManifest.xml:24:18-86
+17        android:debuggable="true"
+18        android:icon="@mipmap/ic_launcher"
+18-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:11:9-43
+19        android:label="@string/app_name"
+19-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:12:9-41
+20        android:roundIcon="@mipmap/ic_launcher_round"
+20-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:13:9-54
+21        android:supportsRtl="true"
+21-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:14:9-35
+22        android:testOnly="true"
+23        android:theme="@style/AppTheme" >
+23-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:15:9-40
+24        <activity android:name="com.southsystem.kobecodechallenge.view.activity.MovieDetailActivity" />
+24-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:17:9-80
+24-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:17:19-68
+25        <activity android:name="com.southsystem.kobecodechallenge.movie.MovieActivity" >
+25-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:18:9-24:20
+25-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:18:19-54
+26            <intent-filter>
+26-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:19:13-23:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:20:17-69
+27-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:20:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:22:17-77
+29-->C:\Users\SouthSystem\Desktop\kobe\app\src\main\AndroidManifest.xml:22:27-74
+30            </intent-filter>
+31        </activity>
+32
+33        <provider
+33-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+34            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+34-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+35            android:authorities="com.southsystem.kobecodechallenge.lifecycle-process"
+35-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+36            android:exported="false"
+36-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+37            android:multiprocess="true" />
+37-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\SouthSystem\.gradle\caches\transforms-2\files-2.1\301f3e5e1c731c7e9ad9332b03d98a62\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+38    </application>
+39
+40</manifest>
