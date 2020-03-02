@@ -75,7 +75,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/ivThumbnail"
+                    android:id="@+id/activity_movie_detail_Thumbnail"
                     imageUrl="@{movie.poster}"
                     android:layout_width="180dp"
                     android:layout_height="220dp"
@@ -97,8 +97,8 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ivThumbnail"
-                    app:layout_constraintTop_toTopOf="@+id/ivThumbnail"
+                    app:layout_constraintStart_toEndOf="@id/activity_movie_detail_Thumbnail"
+                    app:layout_constraintTop_toTopOf="@+id/activity_movie_detail_Thumbnail"
                     tools:text="@tools:sample/full_names" />
 
                 <TextView
@@ -114,17 +114,17 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivThumbnail"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_movie_detail_Thumbnail"
                     tools:text="Release date" />
 
-                <!--                <ProgressBar-->
-                <!--                    android:id="@+id/activity_movie_detail_loader"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="0dp"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="@id/activity_movie_detail_release_date"-->
-                <!--                    app:layout_constraintStart_toEndOf="@id/activity_movie_detail_release_date"-->
-                <!--                    app:layout_constraintTop_toTopOf="@id/activity_movie_detail_release_date"-->
-                <!--                    tools:visibility="gone" />-->
+                <ProgressBar
+                    android:id="@+id/activity_movie_detail_loader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@id/activity_movie_detail_release_date"
+                    app:layout_constraintStart_toEndOf="@id/activity_movie_detail_release_date"
+                    app:layout_constraintTop_toTopOf="@id/activity_movie_detail_release_date"
+                    tools:visibility="gone" />
 
                 <TextView
                     android:id="@+id/activity_movie_detail_support_view"

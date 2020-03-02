@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,19 +29,22 @@ public abstract class ActivityMovieDetailBinding extends ViewDataBinding {
   public final TextView activityMovieDetailGenre;
 
   @NonNull
+  public final ProgressBar activityMovieDetailLoader;
+
+  @NonNull
   public final TextView activityMovieDetailReleaseDate;
 
   @NonNull
   public final TextView activityMovieDetailSupportView;
 
   @NonNull
+  public final ImageView activityMovieDetailThumbnail;
+
+  @NonNull
   public final TextView activityMovieDetailTitle;
 
   @NonNull
   public final ImageView ivBackground;
-
-  @NonNull
-  public final ImageView ivThumbnail;
 
   @Bindable
   protected MovieDetail mMovie;
@@ -50,18 +54,20 @@ public abstract class ActivityMovieDetailBinding extends ViewDataBinding {
 
   protected ActivityMovieDetailBinding(Object _bindingComponent, View _root, int _localFieldCount,
       ImageView activityMovieDetailBackarrow, View activityMovieDetailErrorComponent,
-      TextView activityMovieDetailGenre, TextView activityMovieDetailReleaseDate,
-      TextView activityMovieDetailSupportView, TextView activityMovieDetailTitle,
-      ImageView ivBackground, ImageView ivThumbnail) {
+      TextView activityMovieDetailGenre, ProgressBar activityMovieDetailLoader,
+      TextView activityMovieDetailReleaseDate, TextView activityMovieDetailSupportView,
+      ImageView activityMovieDetailThumbnail, TextView activityMovieDetailTitle,
+      ImageView ivBackground) {
     super(_bindingComponent, _root, _localFieldCount);
     this.activityMovieDetailBackarrow = activityMovieDetailBackarrow;
     this.activityMovieDetailErrorComponent = activityMovieDetailErrorComponent;
     this.activityMovieDetailGenre = activityMovieDetailGenre;
+    this.activityMovieDetailLoader = activityMovieDetailLoader;
     this.activityMovieDetailReleaseDate = activityMovieDetailReleaseDate;
     this.activityMovieDetailSupportView = activityMovieDetailSupportView;
+    this.activityMovieDetailThumbnail = activityMovieDetailThumbnail;
     this.activityMovieDetailTitle = activityMovieDetailTitle;
     this.ivBackground = ivBackground;
-    this.ivThumbnail = ivThumbnail;
   }
 
   public abstract void setMovie(@Nullable MovieDetail movie);

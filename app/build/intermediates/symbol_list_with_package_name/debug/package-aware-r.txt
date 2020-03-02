@@ -1464,9 +1464,11 @@ id action_mode_close_button
 id action_text
 id actions
 id activity_chooser_view_content
+id activity_movie_detail_Thumbnail
 id activity_movie_detail_backarrow
 id activity_movie_detail_error_component
 id activity_movie_detail_genre
+id activity_movie_detail_loader
 id activity_movie_detail_release_date
 id activity_movie_detail_support_view
 id activity_movie_detail_title
@@ -1559,7 +1561,6 @@ id invisible
 id italic
 id item_touch_helper_previous_elevation
 id ivBackground
-id ivThumbnail
 id labeled
 id largeLabel
 id left

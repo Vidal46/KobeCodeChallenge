@@ -17,6 +17,7 @@ public class ActivityMovieDetailBindingImpl extends ActivityMovieDetailBinding  
         sViewsWithIds.put(R.id.activity_movie_detail_error_component, 7);
         sViewsWithIds.put(R.id.activity_movie_detail_backarrow, 8);
         sViewsWithIds.put(R.id.activity_movie_detail_release_date, 9);
+        sViewsWithIds.put(R.id.activity_movie_detail_loader, 10);
     }
     // views
     @NonNull
@@ -29,24 +30,25 @@ public class ActivityMovieDetailBindingImpl extends ActivityMovieDetailBinding  
     // Inverse Binding Event Handlers
 
     public ActivityMovieDetailBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 10, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 11, sIncludes, sViewsWithIds));
     }
     private ActivityMovieDetailBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
             , (android.widget.ImageView) bindings[8]
             , (android.view.View) bindings[7]
             , (android.widget.TextView) bindings[5]
+            , (android.widget.ProgressBar) bindings[10]
             , (android.widget.TextView) bindings[9]
             , (android.widget.TextView) bindings[6]
+            , (android.widget.ImageView) bindings[4]
             , (android.widget.TextView) bindings[2]
             , (android.widget.ImageView) bindings[1]
-            , (android.widget.ImageView) bindings[4]
             );
         this.activityMovieDetailGenre.setTag(null);
         this.activityMovieDetailSupportView.setTag(null);
+        this.activityMovieDetailThumbnail.setTag(null);
         this.activityMovieDetailTitle.setTag(null);
         this.ivBackground.setTag(null);
-        this.ivThumbnail.setTag(null);
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
         this.mboundView3 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[3];
@@ -142,9 +144,9 @@ public class ActivityMovieDetailBindingImpl extends ActivityMovieDetailBinding  
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.activityMovieDetailGenre, movieReleaseDate);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.activityMovieDetailSupportView, movieOverview);
+            br.com.marvel.extensions.ImageViewExtensionsKt.setImageUrl(this.activityMovieDetailThumbnail, moviePoster);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.activityMovieDetailTitle, movieTitle);
             br.com.marvel.extensions.ImageViewExtensionsKt.setImageUrl(this.ivBackground, moviePoster);
-            br.com.marvel.extensions.ImageViewExtensionsKt.setImageUrl(this.ivThumbnail, moviePoster);
         }
     }
     // Listener Stub Implementations
