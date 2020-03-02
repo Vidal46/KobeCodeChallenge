@@ -4,6 +4,7 @@ import com.southsystem.kobecodechallenge.datasource.MovieRemoteDataSource
 import com.southsystem.kobecodechallenge.repository.MovieRepository
 import com.southsystem.kobecodechallenge.service.MovieService
 import com.southsystem.kobecodechallenge.util.getApi
+import com.southsystem.kobecodechallenge.viewmodel.MovieDetailViewModel
 import com.southsystem.kobecodechallenge.viewmodel.MoviesListViewModel
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.viewmodel.dsl.viewModel
@@ -19,5 +20,9 @@ val movieModule = module {
 
     viewModel {
         MoviesListViewModel(get(), Dispatchers.IO)
+    }
+
+    viewModel {
+        MovieDetailViewModel(get(), Dispatchers.IO)
     }
 }
