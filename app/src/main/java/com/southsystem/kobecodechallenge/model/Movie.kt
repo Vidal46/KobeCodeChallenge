@@ -6,7 +6,8 @@ import java.io.Serializable
 
 data class Movie(
     @SerializedName("id") val id: Int?,
-    @SerializedName("name") val name: String?,
+    @SerializedName("title") val name: String?,
     @SerializedName("genre") val description: List<Genre>?,
+    @SerializedName("poster_path") val poster: String?,
     @SerializedName("overview") val overview: String?
 ) : Serializable

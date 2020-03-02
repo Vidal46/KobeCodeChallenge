@@ -1,12 +1,17 @@
 package com.southsystem.kobecodechallenge.model
 
 import com.google.gson.annotations.SerializedName
+import com.southsystem.kobecodechallenge.movie.model.Movie
 
-data class MovieResponse<T>(
-    @SerializedName("code") val code: Int,
-    @SerializedName("data") val data: Data<T>
-) {
-    class Data<T>(
-        @SerializedName("results") val results: List<T>
-    )
+class MoviesResponse {
+
+    @SerializedName("results")
+    var movies: List<Movie> = listOf()
+
+    @SerializedName("total_pages")
+    var totalPages: Int? = null
+
+    @SerializedName("page")
+    var currentPage: Int? = null
+
 }
