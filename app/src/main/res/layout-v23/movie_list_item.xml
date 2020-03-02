@@ -6,50 +6,58 @@
     <data>
 
         <variable
-            name="character"
+            name="movie"
             type="com.southsystem.kobecodechallenge.movie.model.Movie" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/movie_list_item_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/movie_list_item_cardview"
             android:layout_width="0dp"
             android:layout_height="190dp"
             app:cardCornerRadius="7dp"
-            app:layout_constraintDimensionRatio="2:3"
+            app:layout_constraintDimensionRatio="8:9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                android:id="@+id/movie_list_item_linear"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/lightGrey"
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/movie_list_item_image"
+                    imageUrl="@{movie.poster}"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     tools:src="@tools:sample/avatars" />
 
                 <me.grantland.widget.AutofitTextView
+                    android:id="@+id/movie_list_item_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/black"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
                     android:maxLines="1"
+                    android:text="@{movie.name}"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
-                    tools:text="Titanic" />
+                    tools:text="Iron Man" />
 
             </LinearLayout>
 
