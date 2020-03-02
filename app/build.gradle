@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -18,13 +17,21 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "URL_BASE", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "API_KEY", "\"c5850ed73901b8d268d0898a8a9d8bff\""
+            buildConfigField "String", "IMAGES_URL", "\"https://image.tmdb.org/t/p/w500\""
         }
 
         release {
             buildConfigField "String", "URL_BASE", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "API_KEY", "\"c5850ed73901b8d268d0898a8a9d8bff\""
+            buildConfigField "String", "IMAGES_URL", "\"https://image.tmdb.org/t/p/w500\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -38,6 +45,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    /*MATERIAL COMPONENTS*/
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
 
     /*RETROFIT*/
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
@@ -66,6 +76,9 @@ dependencies {
 
     /*LOTTIE*/
     implementation 'com.airbnb.android:lottie:3.1.0'
+
+    /*JODA TIME */
+    implementation 'joda-time:joda-time:2.10.1'
 
     /*TEST*/
     testImplementation 'junit:junit:4.12'
