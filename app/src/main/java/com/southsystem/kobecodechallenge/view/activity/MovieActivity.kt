@@ -4,15 +4,14 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.southsystem.kobecodechallenge.R
-import com.southsystem.kobecodechallenge.model.Genre
 import com.southsystem.kobecodechallenge.movie.model.Movie
 import com.southsystem.kobecodechallenge.util.EndlessRecyclerOnScrollListener
 import com.southsystem.kobecodechallenge.view.activity.MovieDetailActivity
@@ -21,7 +20,7 @@ import com.southsystem.kobecodechallenge.viewmodel.MoviesListViewModel
 import kotlinx.android.synthetic.main.activity_movie.*
 import kotlinx.android.synthetic.main.error_component.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.*
+
 
 const val BOOTSTRAP_TIME_DELAY: Long = 2000
 
@@ -31,7 +30,7 @@ class MovieActivity : AppCompatActivity() {
 
     private val viewModel: MoviesListViewModel by viewModel()
 
-    private val moviesList: ArrayList<Movie> = arrayListOf()
+    private val moviesList: MutableList<Movie> = mutableListOf()
 
     private lateinit var adapter: MoviesAdapter
 
@@ -83,17 +82,33 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun setActivityObservers() {
-        activity_movie_search_container.editText?.doOnTextChanged { text, start, count, after ->
-            adapter.filter.filter(text) {
-                if (it == 0) {
-//                    viewModel._isLoading.value = true
-                    Toast.makeText(activity, "first", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(activity, "second", Toast.LENGTH_SHORT).show()
-                }
+
+        activity_movie_search_container.editText?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                filter(p0.toString())
+
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        })
+    }
+
+    private fun filter(text: String) {
+        val filteredList = ArrayList<Movie>()
+
+        for (item in moviesList) {
+            if (item.name?.toLowerCase()?.contains(text.toLowerCase())!!) {
+                filteredList.add(item)
             }
         }
+
+        if (text.isEmpty()) setAdapter()
+
+        adapter.filterList(filteredList)
     }
+
 
     private fun configureListeners() {
         activity_movie_error_component.btnRetry.setOnClickListener {

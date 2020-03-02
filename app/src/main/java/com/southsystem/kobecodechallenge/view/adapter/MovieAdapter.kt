@@ -10,18 +10,13 @@ import com.southsystem.kobecodechallenge.R
 import com.southsystem.kobecodechallenge.databinding.MovieListItemBinding
 import com.southsystem.kobecodechallenge.movie.model.Movie
 
+
 class MoviesAdapter(
     private var moviesList: List<Movie>,
     private val listener: (Movie) -> Unit
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int = moviesList.size
-
-    var filteredMovies = mutableListOf<Movie>()
-
-    init {
-        filteredMovies.addAll(moviesList)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding: MovieListItemBinding = DataBindingUtil.inflate(
@@ -32,41 +27,14 @@ class MoviesAdapter(
         return MovieItemViewHolder(binding, listener)
     }
 
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(charSequence: CharSequence): FilterResults {
-                val charString = charSequence.toString()
-                val newMoviesList = mutableListOf<Movie>()
-
-                if (charString.isNotEmpty() && charSequence.length >= 3) {
-                    moviesList.forEach {
-                        if (it.name?.contains(charString, true)!!) {
-                            newMoviesList.add(it)
-                        }
-                    }
-                } else {
-                    newMoviesList.addAll(moviesList)
-                }
-
-                val filterResults = FilterResults()
-
-                filterResults.run {
-                    values = newMoviesList
-                    count = newMoviesList.size
-                }
-                return filterResults
-            }
-
-            override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
-                filteredMovies = filterResults.values as MutableList<Movie>
-                notifyDataSetChanged()
-            }
-        }
-    }
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder as MovieItemViewHolder
         holder.onBind(moviesList[position])
+    }
+
+    fun filterList(filteredList: ArrayList<Movie>) {
+        moviesList = filteredList
+        notifyDataSetChanged()
     }
 
     class MovieItemViewHolder(

@@ -8,8 +8,8 @@ import com.southsystem.kobecodechallenge.movie.model.Movie
 
 class MovieRepository(private val dataSource: MovieRemoteDataSource) {
 
-    suspend fun getPopularMovies(page: Int): MoviesResponse {
-        return dataSource.getPopularMovies(page)
+    suspend fun getUpcomingMovies(page: Int): MoviesResponse {
+        return dataSource.getUpcomingMovies(page)
     }
 
     suspend fun getMovieDetails(movieId: Int): MovieDetail {

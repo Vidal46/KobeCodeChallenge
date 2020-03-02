@@ -35,7 +35,7 @@ class MoviesListViewModel(
             configureLoader(true, page)
 
             try {
-                val response = repository.getPopularMovies(page)
+                val response = repository.getUpcomingMovies(page)
                 _movies.postValue(response)
                 configureLoader(false, page)
             } catch (e: Exception) {

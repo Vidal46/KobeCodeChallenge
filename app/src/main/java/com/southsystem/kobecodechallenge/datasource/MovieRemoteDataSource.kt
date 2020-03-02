@@ -6,8 +6,8 @@ import com.southsystem.kobecodechallenge.service.MovieService
 
 class MovieRemoteDataSource(private val service: MovieService) {
 
-    suspend fun getPopularMovies(page: Int): MoviesResponse {
-        return service.getPopularMovies(page, "en")
+    suspend fun getUpcomingMovies(page: Int): MoviesResponse {
+        return service.getUpcomingMovies(page, "en")
     }
 
     suspend fun getMovieDetails(movieId: Int): MovieDetail {
