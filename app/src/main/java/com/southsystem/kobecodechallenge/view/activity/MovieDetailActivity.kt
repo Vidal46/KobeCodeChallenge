@@ -75,7 +75,7 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun configureErrorLayout() {
-//        activity_movie_detail_loader.visibility = View.GONE
+        activity_movie_detail_loader.visibility = View.GONE
         activity_movie_detail_error_component.visibility = View.VISIBLE
     }
 
@@ -83,14 +83,15 @@ class MovieDetailActivity : AppCompatActivity() {
         viewModel.run {
             details.observe(activity, Observer {
                 configureDataModel(it)
-
+                activity_movie_detail_loader.visibility = View.GONE
             })
 
             error.observe(activity, Observer {
-                //                configureErrorLayout()
+                configureErrorLayout()
             })
+
             isLoading.observe(activity, Observer { isLoading ->
-                //                onLoadingStatusChange(isLoading)
+                activity_movie_detail_loader.visibility = View.GONE
             })
         }
     }
