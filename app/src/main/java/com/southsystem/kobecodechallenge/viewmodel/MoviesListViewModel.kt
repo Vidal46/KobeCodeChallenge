@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.southsystem.kobecodechallenge.model.Genre
+import com.southsystem.kobecodechallenge.model.MoviesResponse
 import com.southsystem.kobecodechallenge.movie.model.Movie
 import com.southsystem.kobecodechallenge.repository.MovieRepository
 import kotlinx.coroutines.launch
@@ -16,11 +17,8 @@ class MoviesListViewModel(
     private val coroutineContext: CoroutineContext
 ) : ViewModel() {
 
-    private val _genres = MutableLiveData<List<Genre>>()
-    val genres: LiveData<List<Movie>> get() = _movies
-
-    private val _movies = MutableLiveData<List<Movie>>()
-    val movies: LiveData<List<Movie>> get() = _movies
+    private val _movies = MutableLiveData<MoviesResponse>()
+    val movies: LiveData<MoviesResponse> get() = _movies
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
@@ -31,24 +29,15 @@ class MoviesListViewModel(
     private val _isUpdating = MutableLiveData<Boolean>()
     val isUpdating: LiveData<Boolean> get() = _isUpdating
 
-    fun getGenres() {
-        viewModelScope.launch(coroutineContext) {
-            try {
-                val response = repository.getGenres()
-                _genres.postValue(response)
-            } catch (e: Exception) {
-                _error.postValue(e.message)
-            }
-        }
-    }
 
-    fun getMoviesList(offset: Int = 0) {
+    fun getMoviesList(page: Int = 1) {
         viewModelScope.launch(coroutineContext) {
-            configureLoader(true, offset)
+            configureLoader(true, page)
 
             try {
-                val response = repository.getPopularMovies(offset)
+                val response = repository.getPopularMovies(page)
                 _movies.postValue(response)
+                configureLoader(false, page)
             } catch (e: Exception) {
                 _error.postValue(e.message)
             }
@@ -56,7 +45,7 @@ class MoviesListViewModel(
     }
 
     private fun configureLoader(showLoader: Boolean, offset: Int) {
-        if (offset > 0) {
+        if (offset > 1) {
             _isUpdating.postValue(showLoader)
         } else {
             _isLoading.postValue(showLoader)
