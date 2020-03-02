@@ -44,6 +44,7 @@
             android:layout_height="match_parent"
             android:cursorVisible="true"
             android:ellipsize="start"
+            android:fontFamily="@font/poppins"
             android:gravity="center_horizontal|center_vertical"
             android:singleLine="true"
             android:textAlignment="center"
