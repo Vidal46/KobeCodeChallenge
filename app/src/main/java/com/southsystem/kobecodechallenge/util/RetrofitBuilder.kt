@@ -12,9 +12,18 @@ private const val TIMEOUT: Long = 60
 fun <T> getApi(serviceClass: Class<T>): T {
 
     val client = OkHttpClient.Builder()
+
     client.readTimeout(TIMEOUT, TimeUnit.SECONDS)
     client.connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-//    client.addInterceptor(QueryParamInterceptor())
+    client.addInterceptor { chain ->
+        chain.request().let {
+
+            val url =
+                it.url().newBuilder().addQueryParameter("api_key", BuildConfig.API_KEY).build()
+            val request = it.newBuilder().url(url).build()
+            chain.proceed(request)
+        }
+    }
 
     val gson = GsonBuilder()
         .setLenient()
